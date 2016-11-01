@@ -41,6 +41,8 @@
             VALUES 
             (?)");
         $query->execute(array($id));
+        $query = $this->db->prepare("INSERT INTO `gameplay` (`user_id`,`level`,`attempts`) VALUES (?,'0','0')");
+        $query->execute(array($id));
         $this->db->commit();
         return 1;
       }

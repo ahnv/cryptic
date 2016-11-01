@@ -2,10 +2,14 @@
 session_start();
 require $_SERVER['DOCUMENT_ROOT'].'/cryptic/inc/autoload.php';
 require $_SERVER['DOCUMENT_ROOT'].'/cryptic/classes/LoginHelper.php';
+$log = new LoginHelper($db);
 if ((isset($_POST['username']) && $_POST['username'] !=  "") && 
     (isset($_POST['password']) && $_POST['password'] !=  "")){
-  $log = new LoginHelper($db);
   $log->login($_POST['username'], $_POST['password']);
+}
+if ($log->isLoggedIn()){
+  header("Location: http://localhost/cryptic/play");
+  //unset($_SESSION['logged_in']);
 }
 
 ?>

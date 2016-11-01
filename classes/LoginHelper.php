@@ -10,15 +10,31 @@
             SELECT `id`, `username`, `password` FROM `users` WHERE `username` = ?");
        $query->execute(array($username));
        $row = $query->fetch(PDO::FETCH_ASSOC);
-       if(hash_equals($row['password'], crypt($password, $row['password']))){
-          $ip = $this->app->_getIP();
-          $q = $this->db->prepare("
-            SELECT `status` FROM `login_log` WHERE `user_id` = ? AND `ip` = ?;");
-          $row = $q->execute(array($row['id'], $ip));
-          if (count($row) > 0){
-            print_r($row);
-          }
-          return 1;
+       if ($row['password']){
+         if(hash_equals($row['password'], crypt($password, $row['password']))){
+            $ip = $this->app->_getIP();
+            $q = $this->db->prepare("
+              SELECT * FROM `login_log` WHERE `user_id` = ? AND `ip` = ?;");
+            $q->execute(array($row['id'], $ip));
+            $r = $q -> fetchAll(PDO::FETCH_ASSOC);
+            if (count($r) > 0){
+              if ($r[0]['status']){
+                $stmt = $this->db->prepare("
+                    UPDATE `login_log` SET `status` = '0', `count` = ? WHERE `login_log`.`id` = ?;
+                  ");
+                $stmt->execute(array($r[0]['count']+1,$r[0]['id']));
+              }
+              $_SESSION['logged_in'] = true;
+            }else{
+              $st = $this->db->prepare("
+                INSERT INTO `login_log` (`user_id`,`ip`) VALUES (?,?)");
+              $st->execute(array($row['id'],$ip));
+              $_SESSION['logged_in'] = true;
+            }
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            return 1;
+         }
        }
     }
     public function isLoggedIn(){

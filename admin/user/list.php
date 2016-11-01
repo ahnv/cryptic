@@ -39,6 +39,7 @@
           <td><?php echo $data['name']?></td>
           <td><?php echo $data['email'] ?></td>
           <td><?php echo $data['username']?></td>
+          <!--<?php echo 'This is hint '.$data['username']?> -->
           <td><div style="width:10px;height:10px;border-radius:50%;background-color:<?php echo $data['status']?"red":"green"; ?>;"></div></td>
           <td><a href="update?<?php echo  $data['status']?"rq=":"dq="; echo $data['id']; ?>">Edit</a></td>
           </tr>

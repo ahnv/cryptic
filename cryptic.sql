@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 01, 2016 at 02:41 AM
+-- Generation Time: Nov 01, 2016 at 03:48 PM
 -- Server version: 5.7.11-log
 -- PHP Version: 7.0.11
 
@@ -31,8 +31,8 @@ CREATE TABLE `gameplay` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `level` int(2) NOT NULL,
-  `clear_time` datetime NOT NULL,
-  `attempts` int(6) NOT NULL
+  `clear_time` datetime DEFAULT NULL,
+  `attempts` int(6) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -45,9 +45,9 @@ DROP TABLE IF EXISTS `login_log`;
 CREATE TABLE `login_log` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `ip` binary(16) NOT NULL,
-  `status` int(2) NOT NULL,
-  `count` int(11) NOT NULL
+  `ip` varchar(255) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0',
+  `count` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -136,17 +136,17 @@ ALTER TABLE `user_stats`
 -- AUTO_INCREMENT for table `gameplay`
 --
 ALTER TABLE `gameplay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `login_log`
 --
 ALTER TABLE `login_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

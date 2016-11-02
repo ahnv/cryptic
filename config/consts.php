@@ -1,5 +1,9 @@
 <?php
 
+define('ORIGIN', 'localhost');
+define( 'SITE_URL',     'http://localhost/cryptic/' );
+define( 'SSTATIC',      'http://localhost/cryptic/_static/' );
+
 define( 'NON_NAV',      -1 );
 define( 'HOME',       0 );
 define( 'ABOUT',      1 );
@@ -15,4 +19,4 @@ define( 'EVENT_NOT_STARTED',  0 );
 define( 'EVENT_STARTED',    1 );
 define( 'EVENT_CLOSED',     2 );
 
-
+define('RAND', 'UqHmx3Z92kPBeVUF7JbaAg825kkG8m4cG9usg6NLkUj3txLWrBqJFg5fMqCShEuf');

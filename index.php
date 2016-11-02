@@ -4,53 +4,49 @@ require $_SERVER['DOCUMENT_ROOT'].'/cryptic/inc/autoload.php';
 require $_SERVER['DOCUMENT_ROOT'].'/cryptic/classes/LoginHelper.php';
 $log = new LoginHelper($db);
 if ((isset($_POST['username']) && $_POST['username'] !=  "") && 
-    (isset($_POST['password']) && $_POST['password'] !=  "")){
-  $log->login($_POST['username'], $_POST['password']);
+(isset($_POST['password']) && $_POST['password'] !=  "")){
+$log->login($_POST['username'], $_POST['password']);
 }
 if ($log->isLoggedIn()){
-  header("Location: http://localhost/cryptic/play");
-  //unset($_SESSION['logged_in']);
+//print_r($_SESSION);
+header("Location: ".SITE_URL."play");
+//unset($_SESSION['logged_in']);
 }
-
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>
-        nCrypt
-    </title>
-
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
+<title>nCrypt</title>
+<link href="<?php echo SSTATIC; ?>css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo SSTATIC; ?>css/sb-admin-2.css" rel="stylesheet">
+<link href="<?php echo SSTATIC; ?>css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container">
-    <div class="header clearfix">
-            <nav>
-          <ul class="nav nav-pills pull-right">
-              <li role="presentation"><a href="">Home</a></li>
-    </ul>
-        </nav>      
-      <h3 class="text-muted">nCrypt</h3>
-    </div>
-        <form class="form-signin" action="" method="post">
-      <div class="form-group">
-        <label for="username" class="sr-only">Username</label>
-        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
-      </div>
-      <div class="form-group">
-              <label for="password" class="sr-only">Password</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-      </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-          </form>   
-    <footer class="footer">
-        <p>&copy; 2016 Abhinav Dhiman</p>
-      </footer>        
-    </div>
+<div id="wrapper">
+<?php include 'inc/nav.php';?>
 </div>
+<div id="page-wrapper">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-4 col-md-offset-4">
+<div class="login-panel panel panel-default">
+<div class="panel-heading"><h3 class="panel-title">Please Sign In</h3></div>
+<div class="panel-body">
+<form role="form" action="#" method="post">
+<fieldset>
+<div class="form-group"><input class="form-control" placeholder="Username" name="username" type="text" autofocus></div>
+<div class="form-group"><input class="form-control" placeholder="Password" name="password" type="password" value=""></div>
+<button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+</fieldset>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="<?php echo SSTATIC; ?>js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo SSTATIC; ?>js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo SSTATIC; ?>js/sb-admin-2.js"></script> 
 </body>
 </html>

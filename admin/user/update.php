@@ -10,4 +10,4 @@
     $user->requalify($_GET['rq']);
   }
  
-  header('Location: http://localhost/cryptic/admin/user/list');
+  header('Location: '.SITE_URL.'admin/user/list');

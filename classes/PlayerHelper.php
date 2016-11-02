@@ -24,6 +24,7 @@
         }
         $query = $this->db->prepare("UPDATE `user_stats` SET `level` = ? WHERE `user_id` = ?");
         $query->execute(array($lvl+1,$id));
+        return 1;
       }else{
         $stmt = $this->db->prepare("SELECT `user_id`, `level`, `attempts` FROM `gameplay` WHERE `user_id` = ? AND `level` = ?");
         $stmt->execute(array($id,$lvl));
@@ -35,6 +36,7 @@
           $query = $this->db->prepare("INSERT INTO `gameplay` (`user_id`,`level`,`attempts`) VALUES (?,?,'1')");
           $query->execute(array($id,$lvl));
         }
+        return 0;
       }
     }
   }

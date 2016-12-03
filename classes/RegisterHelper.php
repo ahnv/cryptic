@@ -8,12 +8,17 @@
     public function usernameExists($username){
       $username = $this->app->_cleanAlphaNumeric($username);
       if (!$username) return false;
-      $query = $this->db->prepare("SELECT `id` FROM `users` WHERE `username` =  ?");
+      $query = $this->db->prepare("SELECT `id` FROM `cryptic_users` WHERE `username` =  ?");
       $query->execute(array($username));
       $rows = $query->fetchAll(PDO::FETCH_ASSOC);
       print_r($username);
       if (count($rows)) return true;
       return false;
+    }
+    private function generate_html($userid, $pass){
+      //Mail Tempate
+      //return '';
+
     }
 
     public function register($username, $password, $email, $name){
@@ -27,22 +32,26 @@
         $this->db->beginTransaction();
         $query = $this->db->prepare("
             INSERT INTO 
-            `users` (`username`, `email`, `password`, `name`) 
+            `cryptic_users` (`username`, `email`, `password`, `name`) 
             VALUES 
             (?, ?, ?, ?)");
         $query->execute(array($username, $email,  $pwd,$name));
-        $query = $this->db->prepare("SELECT `id` FROM `users` WHERE `username` = ?");
+        $query = $this->db->prepare("SELECT `id` FROM `cryptic_users` WHERE `username` = ?");
         $query->execute(array($username));
         $id = $query->fetch(PDO::FETCH_ASSOC);
         $id = $id['id'];
         $query = $this->db->prepare("
           INSERT INTO 
-            `user_stats` (`user_id`) 
+            `cryptic_user_stats` (`user_id`) 
             VALUES 
             (?)");
         $query->execute(array($id));
-        $query = $this->db->prepare("INSERT INTO `gameplay` (`user_id`,`level`,`attempts`) VALUES (?,'0','0')");
+        $query = $this->db->prepare("INSERT INTO `cryptic_gameplay` (`user_id`,`level`,`attempts`) VALUES (?,'0','0')");
         $query->execute(array($id));
+        $header = "From:no-reply@*****.*** \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+        $mail = mail($email,"Login Details", self::generate_html($username, $password) , $header);
         $this->db->commit();
         return 1;
       }
@@ -57,7 +66,7 @@
     public function getList(){
       try{
         $query = $this->db->prepare("
-            SELECT `id`, `username`, `email`, `name`,`status` FROM `users`
+            SELECT `id`, `username`, `email`, `name`,`status` FROM `cryptic_users`
             ");
         $query->execute();
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);

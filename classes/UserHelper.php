@@ -8,7 +8,7 @@
       $id = $this->app->_cleanINT($id);
       try{
         $query = $this->db->prepare("
-            UPDATE `users` SET `status` = 1 WHERE `id` = ?");
+            UPDATE `cryptic_users` SET `status` = 1 WHERE `id` = ?");
         $query->execute(array($id));
         SysLog::send($id.' is Disqualified',LOG_CRIT);
         return 1;
@@ -22,7 +22,7 @@
       $id = $this->app->_cleanINT($id);
       try{
         $query = $this->db->prepare("
-            UPDATE `users` SET `status` = 0 WHERE `id` = ?");
+            UPDATE `cryptic_users` SET `status` = 0 WHERE `id` = ?");
         $query->execute(array($id));
         SysLog::send($id.' is Reinstated',LOG_CRIT);
         return 1;
@@ -37,7 +37,7 @@
       $pwd = crypt($password,password_hash($password, PASSWORD_BCRYPT));
       try{
         $query = $this->db->prepare("
-            UPDATE `users` SET `password` = ? WHERE `id` = ?");
+            UPDATE `cryptic_users` SET `password` = ? WHERE `id` = ?");
         $query->execute(array($pwd, $id));
         return 1;
       }

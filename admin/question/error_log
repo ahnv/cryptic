@@ -1,0 +1,5 @@
+[20-Nov-2016 08:45:32 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/abhinavd/ncrypt.net.in/cryptic/classes/QuestionHelper.php:50
+Stack trace:
+#0 /home/abhinavd/ncrypt.net.in/cryptic/admin/question/list.php(7): QuestionHelper->getList()
+#1 {main}
+  thrown in /home/abhinavd/ncrypt.net.in/cryptic/classes/QuestionHelper.php on line 50

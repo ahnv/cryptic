@@ -1,19 +1,20 @@
 <?php
+define('LIVE', false);
 
-define('ORIGIN', 'localhost');
-define( 'SITE_URL',     'http://localhost/cryptic/' );
-define( 'SSTATIC',      'http://localhost/cryptic/_static/' );
-
-define( 'NON_NAV',      -1 );
-define( 'HOME',       0 );
-define( 'ABOUT',      1 );
-define( 'HOW_TO_PLAY',    2 );
-define( 'RULES',      3 );
-define( 'HINTS',      4 );
-define( 'LEADERBOARD',    5 );
-
-define( 'EVENT_START',  strtotime( '2017-06-24 00:00:00' ) );
-define( 'EVENT_END',  strtotime( '2017-06-26 00:00:00' ) );
+if (!LIVE){
+  define('ORIGIN', 'localhost');
+  define( 'SITE_URL',     'http://localhost/cryptic/' );
+  define( 'SSTATIC',      'http://localhost/cryptic/_static/' );
+}
+if (LIVE){
+  define('ORIGIN', 'ncrypt.net.in');
+  define( 'SITE_URL',     'https://*****.***/cryptic/' );
+  define( 'SSTATIC',      'https://*****.***/cryptic/_static/' );
+}
+define( 'EVENT_START_VAL',   '2016-11-19 00:00:00' ) ;
+define( 'EVENT_END_VAL',   '2016-11-20 17:59:59' ) ;
+define( 'EVENT_START',  strtotime( EVENT_START_VAL ) );
+define( 'EVENT_END',  strtotime( EVENT_END_VAL ) );
 
 define( 'EVENT_NOT_STARTED',  0 );
 define( 'EVENT_STARTED',    1 );

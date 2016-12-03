@@ -1,14 +1,16 @@
 <?php
 require $_SERVER['DOCUMENT_ROOT'].'/cryptic/inc/autoload.php';
+$app = new APP();
+SysLog::send('ADMIN PANEL ACCESSED FROM '.$app->_getIP(),LOG_EMERG);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Admin</title>
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -28,7 +30,7 @@ require $_SERVER['DOCUMENT_ROOT'].'/cryptic/inc/autoload.php';
       <h1>Hello</h1>
     </div>
     <footer class="footer">
-        <p>&copy; 2016 nCrypt</p>
+        
       </footer>
   </div>
 </body>

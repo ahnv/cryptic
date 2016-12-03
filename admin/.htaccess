@@ -1,0 +1,4 @@
+#AuthType Basic
+#AuthName "Password Protected Area"
+#AuthUserFile  /home2/abhinavd/ncrypt.net.in/cryptic/admin/.htpasswd
+#Require valid-user

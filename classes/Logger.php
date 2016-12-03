@@ -1,8 +1,8 @@
 <?php
   class Syslog{
 
-  public static $hostname   = "logs4.papertrailapp.com";
-  public static $port       = 45401;
+  public static $hostname   = "";
+  public static $port       = ;
   public static $program    = "[]";
   public static $embedLevel = true;
 

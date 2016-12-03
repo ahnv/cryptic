@@ -11,10 +11,10 @@
 <html>
 <head>
     <title>Questions</title>
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -38,7 +38,7 @@
               </h3>
             </div>
             <div class="panel-body">
-              <div class=" col-sm-4">
+              <div class=" col-sm-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">Hint 1
                   </div>
@@ -47,21 +47,12 @@
                   </div>
                 </div>
               </div>
-              <div class=" col-sm-4">
+              <div class=" col-sm-6">
                 <div class="panel panel-default">
                   <div class="panel-heading">Hint 2
                   </div>
                   <div class="panel-body">
                     <?php echo $data['hint2']?>
-                  </div>
-                </div>
-              </div>
-              <div class=" col-sm-4">
-                <div class="panel panel-default">
-                  <div class="panel-heading">Hint 3
-                  </div>
-                  <div class="panel-body">
-                    <?php echo $data['hint3']?>
                   </div>
                 </div>
               </div>
@@ -72,7 +63,7 @@
           <?php endforeach;?>
     </div>
     <footer class="footer">
-        <p>&copy; 2016 nCrypt</p>
+        
       </footer>
   </div>
 </body>

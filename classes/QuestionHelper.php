@@ -3,31 +3,28 @@
     private $db;
     private $app;
     public function __construct($db) { $this->db =  $db; $this->app = new APP();}
-    public function add($level, $hint1, $hint2, $hint3, $answer){
-      $level = $this->app->_cleanINT($level);
+    public function add($level, $hint1, $hint2, $answer){
       $answer = $this->app->_cleanString($answer);
-      if (!$level || !$hint1 || !$hint2 || !$hint3 || !$answer) return 0;
+      if (!$hint1 || !$hint2 || !$answer) return 0;
       try{
         $query = $this->db->prepare("
             INSERT INTO 
-            `questions` (`level`, `hint1`, `hint2`, `hint3`, `answer`) 
+            `cryptic_questions` (`level`, `hint1`, `hint2`, `answer`) 
             VALUES 
-            (?, ?, ?, ?, ?)");
-        $query->execute(array($level, $hint1, $hint2, $hint3, $answer));
+            (?, ?, ?, ?)");
+        $query->execute(array($level, $hint1, $hint2, $answer));
         return 1;
       }
        catch(PDOException $e){
         SysLog::send($e,LOG_ERR);
       }
     }
-    public function update($level, $hint1, $hint2, $hint3, $answer){
-
-      $level = $this->app->_cleanINT($level);
+    public function update($level, $hint1, $hint2, $answer){
       $answer = $this->app->_cleanString($answer);
       try{
         $query = $this->db->prepare("
-            UPDATE `questions` SET `hint1` = ?, `hint2` = ?, `hint3` = ?, `answer` = ? WHERE `level` = ?");
-        $query->execute(array($hint1, $hint2, $hint3, $answer, $level));
+            UPDATE `cryptic_questions` SET `hint1` = ?, `hint2` = ?, `answer` = ? WHERE `level` = ?");
+        $query->execute(array($hint1, $hint2, $answer, $level));
         return 1;
       }
        catch(PDOException $e){
@@ -38,7 +35,7 @@
       $level = $this->app->_cleanINT($level);
       try{
         $query = $this->db->prepare("
-            SELECT `level`, `hint1`, `hint2`, `hint3`,`answer` FROM `questions` WHERE `level` = ?
+            SELECT `level`, `hint1`, `hint2`,`answer` FROM `cryptic_questions` WHERE `level` = ?
             ");
         $query->execute(array($level));
         $rows = $query->fetch(PDO::FETCH_ASSOC);
@@ -51,7 +48,7 @@
     public function getList(){
       try{
         $query = $this->db->prepare("
-            SELECT `level`, `hint1`, `hint2`, `hint3`,`answer` FROM `questions`
+            SELECT `level`, `hint1`, `hint2`,`answer` FROM `cryptic_questions` ORDER BY  `level` 
             ");
         $query->execute();
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +61,7 @@
     public function getLevelList(){
       try{
         $query = $this->db->prepare("
-            SELECT `level` FROM `questions`
+            SELECT `level` FROM `cryptic_questions`
             ");
         $query->execute();
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -6,9 +6,8 @@ $reg = new QuestionHelper($db);
 if ((isset($_POST['level']) && $_POST['level'] != "") && 
     (isset($_POST['hint1']) && $_POST['hint1'] != "") && 
     (isset($_POST['hint2']) && $_POST['hint2'] != "") && 
-    (isset($_POST['hint3']) && $_POST['hint3'] != "") && 
     (isset($_POST['answer']) && $_POST['answer'] != "")){
-  $error = $reg->update( $_POST['level'], $_POST['hint1'],$_POST['hint2'],$_POST['hint3'],$_POST['answer']);
+  $error = $reg->update( $_POST['level'], $_POST['hint1'],$_POST['hint2'],$_POST['answer']);
   if ($error == 2)
     $hasError =1;
 }
@@ -25,9 +24,9 @@ if (isset($_GET['lvl']) && $_GET['lvl'] != ""){
         Questions
     </title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+  <link href="//getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
 </head>
 <body>
@@ -60,11 +59,6 @@ if (isset($_GET['lvl']) && $_GET['lvl'] != ""){
         <label for="hint2" class="sr-only">Hint 2</label>
         <textarea type="text" id="hint2" name="hint2" class="form-control" rows="5" placeholder="Hint 2" required><?php echo $det['hint2'];?></textarea>
       </div>
-
-      <div class="form-group">
-        <label for="hint3" class="sr-only">Hint 3</label>
-        <textarea type="text" id="hint3" name="hint3" class="form-control" rows="5" placeholder="Hint 3" required><?php echo $det['hint3'];?></textarea>
-      </div>
       <div class="form-group">
             <label for="answer" class="sr-only">Answer</label>
             <input type="text" id="name" name="answer" class="form-control" placeholder="Answer" required autofocus value="<?php echo $det['answer'];?>">
@@ -72,7 +66,7 @@ if (isset($_GET['lvl']) && $_GET['lvl'] != ""){
             <button class="btn btn-lg btn-primary btn-block" type="submit">Save Question</button>
           </form>
     <footer class="footer">
-        <p>&copy; 2016 nCrypt</p>
+        
       </footer> 
     </div>
 </body>

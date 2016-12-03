@@ -20,9 +20,9 @@ if ((isset($_POST['name']) && $_POST['name'] != "") &&
         Register
     </title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="//getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+  <link href="//getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
 
 </head>
 <body>
@@ -64,7 +64,7 @@ if ((isset($_POST['name']) && $_POST['name'] != "") &&
             <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
           </form>
     <footer class="footer">
-        <p>&copy; 2016 nCrypt</p>
+        
       </footer> 
     </div>
 </body>

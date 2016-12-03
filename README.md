@@ -1,4 +1,4 @@
-# Cryptic Hunt
+# Enigma
 
 Cryptic Hunt features
   - Admin Panel
